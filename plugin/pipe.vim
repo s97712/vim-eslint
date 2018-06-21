@@ -1,7 +1,7 @@
 let s:status_map = [
-  \"Failed to compile.",
-  \"Compiled successfully!",
-  \"Compiled with warnings.\n\n"
+  \"^Failed to compile.",
+  \"^Compiled successfully!",
+  \"^Compiled with warnings."
   \]
 
 let s:eslint_pat = 'Line \(.*\):[ ]*\(.\+[^ ]\) \+ \([^ ]\+\)$'
@@ -55,7 +55,7 @@ func! s:read_data(chan, data)
     endif
   else
     for s:status in s:status_map
-      if(a:data == s:status)
+      if(a:data =~ s:status)
         let s:ready_parse = 1
         echo "Complie Server: ".s:status
         break

@@ -75,8 +75,9 @@ func! s:stop_server()
   if exists('s:compile_job') && job_status(s:compile_job) == 'run'
     call job_stop(s:compile_job)
     echo "stop compile task!"
-  endf
+  endif
 endf
+
 func! s:start_server()
   if exists('s:compile_job') && job_status(s:compile_job) == 'run'
     call job_stop(s:compile_job)
